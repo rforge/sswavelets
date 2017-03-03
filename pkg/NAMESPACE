@@ -1,0 +1,32 @@
+
+import(methods)
+#importFrom(graphics, plot, hist)
+import(sp)
+#importFrom("sp", bbox, Spatial, SpatialGrid, SpatialGridDataFrame, plot)
+import(raster)
+import(rasterVis)
+#importFrom("rasterVis", plot3D)
+import(waveslim)
+
+
+
+
+#--------------------------------------------------------------------------------------
+# Environments, misc functions, etc. for export
+#
+#exportPattern("^[[:alpha:]]+")
+exportPattern("^[[:alpha:]]+")
+
+
+
+#--------------------------------------------------------------------------------------
+# Classes export section...
+#
+exportClasses(ssWavelet, ssMODWT, ssCovMODWT)
+
+
+
+#--------------------------------------------------------------------------------------
+# methods export section...
+#
+exportMethods('ssMODWT', 'ssCovMODWT')

@@ -1,0 +1,18 @@
+Package: ssWavelets
+Type: Package
+Title: Wavelet Functionality for Package 'sampSurf'
+Version: 0.1
+Date: 2017-01-12
+Author: Jeffrey H. Gove
+Maintainer: Jeffrey H. Gove <jgove@fs.fed.us>
+Depends: R (>= 2.13.1), methods(>= 2.13.1), sp(>= 0.9-84), raster(>= 1.9-5), rasterVis(>= 0.10-3), sampSurf(>= 0.7-3),
+         waveslim(>= 1.7.5)
+Description: This package adds some ability to analyze the simulation results from package
+             sampSurf by scale (distance) using wavelets.
+License: GPL (>= 3)
+LazyData: TRUE
+Collate: ssWaveletsClass.R ssReflect.R ssToroid.R covMODWT.R ssMODWT.R ssCovMODWT.R palMODWT.R
+         plotMODWT2D.R plotLevel2D.R ssEnergy.R hfsMODWT.R hfsPlot.R varPlot.R
+		 show.R summary.R
+URL: http://sampsurf.r-forge.r-project.org/
+
