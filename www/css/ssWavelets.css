@@ -1,0 +1,152 @@
+/*****************************************************************************
+  CSS for the sampSurf website.
+  
+  {some concepts from selectutorial and floatutorial (with changes)}
+ 
+  J. H. Gove
+  USDA Forest Service
+  Northern Research Station
+  271 Mast Road
+  Durham, NH 03824
+*****************************************************************************/
+
+/*  ------------------------------------------
+    Some defintions for R code in the text... 
+    ------------------------------------------*/
+
+Rpkg {   /* typeset R package name */
+      font-variant: small-caps;
+     }
+
+Rcode {  /* this is less "heavy" in the text than code, and should be the same font */
+       font-size: 90%;
+       font-family: monospace;
+       font-weight: 500;
+      }
+
+Rclass { }  /*empty placeholder definition, see content settings following.. */
+Rclass:before { content: open-quote }
+Rclass:after { content: close-quote }
+
+acronym { font-variant: small-caps; } /* extend acronym */
+
+/* fancy single quotes -- who cares other than me? */
+sq:lang(en) { quotes:  "\2018"  "\2019" }
+sq:before {content: open-quote }
+sq:after {content: close-quote }
+
+
+Code {  /* any other code like file names, command line stuff, etc. */
+       font-size: 90%;
+       font-family: monospace;
+       font-weight: 500;
+       font-style: oblique;
+      }
+
+
+
+
+
+ 
+/* --------------------------------------------------------------------
+    Body: body of the page (see also container)...
+    --------------------------------------------------------------------*/
+body {
+      margin: 0;
+      padding: 0;
+      font-family: georgia, times, "times new roman", serif;
+      background-color: aliceblue;
+      font-size: 110%;
+     }
+
+
+
+/* -------------------------------------------------------------------
+   Container: a named type for body element...
+   -------------------------------------------------------------------- */
+
+#container {
+    width: 96%;
+    margin: 10px auto; /*10px to top & botton; centered R2L */
+ }
+ 
+
+
+
+/* -------------------------------------------------------------------
+   R-Forge: float for logo...
+   -------------------------------------------------------------------- */
+
+div#RFlogo {
+    float: left;
+    width: 158px;
+    margin: 0.5em 0 0 0;
+    opacity: 1.8;
+    /*padding-top: 2em;*/
+    /*border: 2px solid Black; */
+    background-color: aliceblue;
+}
+
+
+
+
+
+/* --------------------------------------------------------------------------------
+   Content: This for the middle column content in body...
+   --------------------------------------------------------------------------------- */
+
+div#content {
+    padding: 0;
+    margin: 0;
+    margin-left: 200px;
+    margin-right: 200px;
+    /*border: 1px solid gray;*/
+} 
+
+div#content h1 {
+    color: MidnightBlue;
+}
+
+div#content h2, h3 {
+    /*font-size: 2em;*/
+    color: MidnightBlue;
+    /*color: #2B547E;*/     /* = Steel Blue 4 */
+    margin: 0;
+    padding-top: .5em;
+    /*font-weight: bold;*/
+    font-variant: small-caps;
+    /*font-family: "cursive";*/
+}
+
+#content a{ text-decoration: none; }
+#content a:link{ 	color: MidnightBlue; }    		   /* for unvisited links */
+/*#content a:visited{ 	color: red; } */	            /* for visited links */
+#content a:hover { 	color: red; }  				   /* when link is clicked */
+#content a:active { 	color: red; } 			   /* when mouse is over link */
+
+
+
+/* used before the footer to clear settings... */
+#cleardiv {
+    clear: both;
+    height: 1em;
+}
+
+
+/* footer style... */
+div#footer {p.italic;
+    clear: both;
+    padding: .5em 1em;
+    border-top: 1px solid #999;
+    text-align: center;
+    color: #600000;
+    font.size: small;
+    font.style: italic;
+} 
+
+
+
+
+
+
+

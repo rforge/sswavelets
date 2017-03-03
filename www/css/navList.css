@@ -1,0 +1,68 @@
+/*****************************************************************************
+  CSS for the top menu navigation.
+ 
+  J. H. Gove
+  USDA Forest Service
+  Northern Research Station
+  271 Mast Road
+  Durham, NH 03824
+*****************************************************************************/
+
+ul#navlist {
+    padding: 0;
+    margin: 0;
+    list-style-type: none;
+    float: left;
+    width: 100%;
+}
+
+ul#navlist li { display: inline; }
+
+ul#navlist li a {
+    float: left;
+    width: 5em;
+    color: White;
+    background-color: #2B547E;     /* = Steel Blue 4 */
+    /*background-color: MidnightBlue;*/
+    padding: 0.2em 1em;
+    text-decoration: none;
+    border-right: 2px solid ;
+}
+
+ul#navlist li a:link {  /* need this to override #content links */
+    float: left;
+    width: 5em;
+    color: White;
+    background-color: #2B547E;     /* = Steel Blue 4 */
+    /*background-color: MidnightBlue;*/
+    padding: 0.2em 1em;
+    text-decoration: none;
+    border-right: 2px solid ;
+}
+
+ul#navlist li a:visited {  /* need this to override #content links */
+    float: left;
+    width: 5em;
+    color: White;
+    background-color: #2B547E;     /* = Steel Blue 4 */
+    /*background-color: MidnightBlue;*/
+    padding: 0.2em 1em;
+    text-decoration: none;
+    border-right: 2px solid ;
+}
+
+ul#navlist li a:hover {
+    background-color: #98AFC7;  /* slategray 3 */
+    /*background-color: SlateGray;*/
+    color: White;
+}
+
+
+/*
+   link stuff...
+*/
+a.plain { text-decoration: none }  
+#navlist a:link{ color: MidnightBlue;}    		/* for unvisited links */
+#navlist a:visited{ color: #6F7492; } 			/* for visited links */
+#navlist a:hover { color: red }  				/* when link is clicked */
+#navlist a:active { color: navy } 			/* when mouse is over link */
