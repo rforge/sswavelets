@@ -109,8 +109,43 @@
 <!-- ============================================================================================== -->
 <h2><a name="Overview"></a>Overview of the ssWavelets package</h2>
 
-<p> The <Rpkg>ssWavelets</Rpkg> package is
+<p> The <Rpkg>ssWavelets</Rpkg> package is meant to be used in conjunction with the
+    sampSurf package to perform wavelet decomposition on the results of a sampling surface
+    simulation. It provides an S4 class structure with constuctor or generator functions
+    that are tailored to work specifically on objects of
+    class <Rclass>sampSurf.</Rclass> Currently, the only supported decomposition is the
+    maximal overlap discrete wavelet transform (<acronym>MODWT</acronym>), although the
+    class structure established will allow for extensions if other decompositions are
+    desired in the future. In addition, only the Haar wavelet filter is supported
+    currently, although, since the underlying wavelet code used in the package
+    (<Rpkg>waveslim</Rpkg>) supports other filters, support for these could also be added
+    in the future.
 </p>
+
+<p> In general, the <em>wavelet filter</em> decomposes the sampSurf simulation results by
+    scale (distance), with each scale corresponding to a different level of the
+    decomposition. This results in a set of anisotropic <em>wavelet coefficients</em> for
+    each scale or level, one each for horizontal, vertical and diagonal components; the
+    sum of these yields an isotropic decomposition for that
+    scale. Residual <em>smooth</em> coefficients for the coarsest level are also available
+    from applying the <em>scaling filter</em>, and its mean corresponds to the sample mean
+    of the sampling surface from sampSurf. Interesting as these <sq>raw wavelet</sq>
+    decompositions may be, the main interest of the wavelet analysis from a sampling
+    perspective has to do with the sample variance, which is the sampling surface variance
+    from a simulation run of sampSurf. The different wavelet decomposition variances
+    corresponding to the raw wavelet coefficients can be easily constructed at each level
+    from the coefficients and are included as part of object creation.  These wavelet
+    variances also correspond to a decomposition of the sample variance, or, its total or
+    average <sq>energy,</sq> depending upon the particular level, filter, and
+    use. Covariance analysis, which may prove useful in the comparison of sampling methods
+    at different scales, is also available in the package.
+</p>
+
+<p> Details of package use are found in the package vignette: <Rclass>A User's Guide to
+	the ssWavelets Package</Rclass>, while the help system is detailed in the normal
+	package vignette. Information on installation and a simple example are found in the
+	following sections. Please refer to the vignettes for more details.
+</p>	  
 
 
 
@@ -120,16 +155,44 @@
 <!-- ============================================================================================== -->
 <h2><a name="Installation"></a>ssWavelets installation</h2>
 
-<p>
-<Rpkg>ssWavelets</Rpkg> is available only on R-Forge. On the project pages, you will note
-that you can install the package directly from R-Forge using&hellip;<br><br>
+
+<p> Before installing <Rpkg>ssWavelets</Rpkg> it is recommended that you first
+  install <Rpkg>sampSurf</Rpkg> and its dependancies. Please refer to
+  the <a href="http://sampsurf.r-forge.r-project.org/#Installation"><Rpkg>sampSurf Installation</Rpkg></a>
+  section of its webpage for installation instructions pertaining to that package.
+</p>
+
+<p> <Rpkg>ssWavelets</Rpkg> is available only on R-Forge. On the project pages, you will
+    note that you can install the package directly from R-Forge using&hellip; <br><br>
 
 <Rcode>install.packages("ssWavelets", repos="http://R-Forge.R-project.org")</Rcode><br><br>
 
 and can include the <Rcode>dep=TRUE</Rcode> argument if you want the packages
-that <Rpkg>ssWavelets</Rpkg> is dependent upon to also be installed. 
+that <Rpkg>ssWavelets</Rpkg> is dependent upon to also be installed. However, this is not
+recommended, please see the reasons in the above link (sampSurf installation) for more
+details.
 </p>
 
+<p> In addition, the <Rpkg>ssWavelets</Rpkg> package requires that the following package
+    be installed prior to use. It is best to install the most recent version
+    from <acronym>CRAN</acronym> as&hellip;<br><br>
+
+  <Rcode>install.packages("waveslim")</Rcode><br><br>
+
+</p>
+
+
+
+<h3><Rpkg>ssWavelets</Rpkg> package vignette</h3>
+
+<p>
+As noted above, there is one extra package vignette (aside from the default help vignette)
+distributed with the package itself. This can also be downloaded here from the R-Forge
+versions if desired&hellip;
+</p>
+
+<a href="https://r-forge.r-project.org/scm/viewvc.php/*checkout*/extra/vignettes/ssWaveletsUsersGuide.pdf?root=ssWavelets">
+  <em> A User's Guide to the <Rclass>ssWavelets</Rclass> Package </em></a><br><br>
 
 
 
@@ -146,6 +209,16 @@ that <Rpkg>ssWavelets</Rpkg> is dependent upon to also be installed.
      ***Note that the highlight package was discontinued/orphaned in CRAN, so
      use.highlight=TRUE is no longer applicable in opts_knit$set below. 4-Mar-2013
 -->
+
+
+
+
+<!-- 
+    Set the chace directory; if using htmlKnitr(), the working directory is set to
+    ~/Rwork/knitr/webpage, so the cahce will be relative to this...
+-->
+		   
+
 
 
 
@@ -175,13 +248,141 @@ that <Rpkg>ssWavelets</Rpkg> is dependent upon to also be installed.
 
 
 <p>
-Here we present some very simple examples illustrating how to use a few of the main
-functions in the <Rpkg>ssWavelets</Rpkg> package. The vignettes go into extensive detail
-concerning the use of the methods shown below. In addition, the online help system is
-quite thorough in documenting class structures, generic functions, and their
-methods. Therefore, we have provided just a very terse set of examples to show a little of
-the functionality of the package here.
+Here we present one very simple example illustrating how to use a few of the main
+functions in the <Rpkg>ssWavelets</Rpkg> package. The User's Guide vignette goes into
+extensive detail concerning the use of the methods shown below as well as many others. In
+addition, the online help system is quite thorough in documenting class structures,
+generic functions, and their methods. Therefore, what is provided is a very terse 
+example to show a little of the functionality of the package here. Please refer to the
+<a href="http://sampsurf.r-forge.r-project.org/#Examples"><Rpkg>sampSurf
+	Examples</Rpkg></a> and associated vignettes for more information on constructing
+	sampling surfaces.
 </p>
+
+
+
+
+
+<h3> Critical Height Sampling </h3>
+
+<p>
+The following code will generate a volume sampling surface using critical height sampling
+(<acronym>CHS</acronym>) in the form of a <Rclass>sampSurf</Rclass> object that will be
+the subject of the subsequent wavelet variance decomposition. A similar example, but with
+a different tree population and more details is found in the User's Guide. The metric
+system is used by default.
+</p>
+
+<div class="chunk" id="critHgt"><div class="rcode"><div class="source"><pre class="knitr r"><span class="hl std">R&gt; </span><span class="hl kwd">require</span><span class="hl std">(sampSurf)</span>
+<span class="hl std">R&gt; </span><span class="hl std">tract.m</span> <span class="hl kwb">=</span> <span class="hl kwd">Tract</span><span class="hl std">(</span><span class="hl kwd">c</span><span class="hl std">(</span><span class="hl kwc">x</span> <span class="hl std">=</span> <span class="hl num">64</span><span class="hl std">,</span> <span class="hl kwc">y</span> <span class="hl std">=</span> <span class="hl num">64</span><span class="hl std">),</span> <span class="hl kwc">cellSize</span><span class="hl std">=</span><span class="hl num">1</span><span class="hl std">)</span> <span class="hl com">#square tract, dyadic grid ~0.5ha</span>
+<span class="hl std">R&gt; </span><span class="hl std">buffTr.m</span> <span class="hl kwb">=</span> <span class="hl kwd">bufferedTract</span><span class="hl std">(</span><span class="hl kwc">bufferWidth</span> <span class="hl std">=</span> <span class="hl num">10</span><span class="hl std">, tract.m)</span>
+<span class="hl std">R&gt; </span><span class="hl std">ag3m</span> <span class="hl kwb">=</span> <span class="hl kwd">angleGauge</span><span class="hl std">(</span><span class="hl num">3</span><span class="hl std">)</span> <span class="hl com">#metric</span>
+<span class="hl std">R&gt; </span><span class="hl std">sschs</span> <span class="hl kwb">=</span> <span class="hl kwd">sampSurf</span><span class="hl std">(</span><span class="hl num">25</span><span class="hl std">, buffTr.m,</span> <span class="hl kwc">iZone</span> <span class="hl std">=</span> <span class="hl str">'criticalHeightIZ'</span><span class="hl std">,</span> <span class="hl kwc">angleGauge</span> <span class="hl std">= ag3m,</span> <span class="hl kwc">dbhs</span> <span class="hl std">=</span> <span class="hl kwd">c</span><span class="hl std">(</span><span class="hl num">12</span><span class="hl std">,</span><span class="hl num">30</span><span class="hl std">),</span>
+<span class="hl std">+ </span>                 <span class="hl kwc">topDiam</span> <span class="hl std">=</span> <span class="hl kwd">c</span><span class="hl std">(</span><span class="hl num">0</span><span class="hl std">,</span><span class="hl num">0</span><span class="hl std">),</span> <span class="hl kwc">startSeed</span> <span class="hl std">=</span> <span class="hl num">304</span><span class="hl std">,</span> <span class="hl kwc">referenceHeight</span> <span class="hl std">=</span> <span class="hl str">'dbh'</span><span class="hl std">)</span>
+</pre></div>
+<div class="output"><pre class="knitr r">
+Number of trees in collection = 25
+Heaping tree: 1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,
+</pre></div>
+<div class="source"><pre class="knitr r"><span class="hl std">R&gt; </span><span class="hl kwd">plot</span><span class="hl std">(sschs,</span> <span class="hl kwc">useImage</span> <span class="hl std">=</span> <span class="hl num">FALSE</span><span class="hl std">)</span>
+</pre></div>
+</div><div class="rimage default"><img src="figures/ssW-critHgt.png" title="plot of chunk critHgt" alt="plot of chunk critHgt" class="plot" /></div></div>
+
+<p>
+  The above figure presents the volume sampling surface for <acronym>CHS</acronym>. Note how
+  the surface (volume estimate) varies within each tree's inclusion zone, depending on
+  its dimensions.
+</p>
+
+<p> Now we can do a <acronym>MODWT</acronym> analysis on this surface&hellip;
+</p>
+
+<div class="chunk" id="chsMODWTvar.level1"><div class="rcode"><div class="source"><pre class="knitr r"><span class="hl std">R&gt; </span><span class="hl std">J.chs</span> <span class="hl kwb">=</span> <span class="hl num">5</span>                             <span class="hl com">#highest decomposition level: J_0</span>
+<span class="hl std">R&gt; </span><span class="hl std">chs.modwt</span> <span class="hl kwb">=</span> <span class="hl kwd">ssMODWT</span><span class="hl std">(sschs,</span> <span class="hl kwc">J</span> <span class="hl std">= J.chs)</span>
+</pre></div>
+<div class="output"><pre class="knitr r">
+Inclusion zone class: criticalHeightIZ
+Surface variance = 75.792717
+Wavelet variance = 75.774213 (MODWT)
+Surf/Wave var ratio = 1.0002442
+Check: surface var matrix = 75.774213 = E[X^2] - E[X]^2
+Surface mean = 6.0179401
+Wavelet mean = 6.0179401 (MODWT)
+Wavelet mean = 6.01794 (MRA)
+</pre></div>
+<div class="source"><pre class="knitr r"><span class="hl std">R&gt; </span><span class="hl kwd">plotLevel2D</span><span class="hl std">(chs.modwt,</span> <span class="hl kwc">type</span> <span class="hl std">=</span> <span class="hl str">'var'</span><span class="hl std">,</span> <span class="hl kwc">level</span> <span class="hl std">=</span> <span class="hl num">1</span><span class="hl std">,</span> <span class="hl kwc">decompType</span> <span class="hl std">=</span> <span class="hl str">'modwt'</span><span class="hl std">)</span>
+</pre></div>
+</div><div class="rimage default"><img src="figures/ssW-chsMODWTvar.level1.png" title="plot of chunk chsMODWTvar.level1" alt="plot of chunk chsMODWTvar.level1" class="plot" /></div><div class="rcode">
+<div class="output"><pre class="knitr r">
+Top left: horizontal
+Top right: diagonal
+Bottom right: vertical
+Botton left: isotropic
+</pre></div>
+</div></div>
+
+<p> The figure above shows the four anisotropic variance decompositions at
+  level <em>j=1</em>, corresponding to the legend printed below the figure. This
+  first-level decomposition is good for <sq>edge detection</sq> and essentially picks out
+  the edges of the inclusion zone as the wavelet traverses the surface in the desired
+  orientation. But as can be seen, it also picks out areas within individual or
+  overlapping inclusion zones where the surface values change more than others. If this
+  were compared against a surface using horizontal point sampling, each tree's surface
+  would be a cylinder, and the edges would be the main feature at this scale. The
+  isotropic image (bottom left) combines the tree anisotropic views.
+</p>  
+
+<p> The raw wavelet coefficients are shown in the following figure for comparison. Here we
+  can see how positive coefficients are generated as the wavelet encounters the boundary
+  of an inclusion zone coming from a background value (of zero), or more generally as the
+  surface increases in the direction of the wavelet filter. Conversely, negative values
+  are generated as the surface decreases in the same direction as the filter.
+</p>
+
+<div class="chunk" id="chsMODWTraw.level1"><div class="rcode"><div class="source"><pre class="knitr r"><span class="hl std">R&gt; </span><span class="hl kwd">plotLevel2D</span><span class="hl std">(chs.modwt,</span> <span class="hl kwc">type</span> <span class="hl std">=</span> <span class="hl str">'raw'</span><span class="hl std">,</span> <span class="hl kwc">level</span> <span class="hl std">=</span> <span class="hl num">1</span><span class="hl std">,</span> <span class="hl kwc">decompType</span> <span class="hl std">=</span> <span class="hl str">'modwt'</span><span class="hl std">)</span>
+</pre></div>
+</div><div class="rimage default"><img src="figures/ssW-chsMODWTraw.level1.png" title="plot of chunk chsMODWTraw.level1" alt="plot of chunk chsMODWTraw.level1" class="plot" /></div><div class="rcode">
+<div class="output"><pre class="knitr r">
+Top left: horizontal
+Top right: diagonal
+Bottom right: vertical
+Botton left: isotropic
+</pre></div>
+</div></div>
+
+<p> Lastly, we show the coarsest level decomposition for both the variance and raw
+  coefficients, respectively. Note that the final image is of the smooth; these images show
+  larger scale relations&hellip;
+
+
+<div class="chunk" id="chsMODWTraw.levelJ"><div class="rcode"><div class="source"><pre class="knitr r"><span class="hl std">R&gt; </span><span class="hl kwd">plotLevel2D</span><span class="hl std">(chs.modwt,</span> <span class="hl kwc">type</span> <span class="hl std">=</span> <span class="hl str">'var'</span><span class="hl std">,</span> <span class="hl kwc">level</span> <span class="hl std">= J.chs,</span> <span class="hl kwc">decompType</span> <span class="hl std">=</span> <span class="hl str">'modwt'</span><span class="hl std">)</span>
+</pre></div>
+</div><div class="rimage default"><img src="figures/ssW-chsMODWTraw.levelJ.png" title="plot of chunk chsMODWTraw.levelJ" alt="plot of chunk chsMODWTraw.levelJ" class="plot" /></div><div class="rcode">
+<div class="output"><pre class="knitr r">
+Top left: horizontal
+Top right: diagonal
+Bottom right: vertical
+Botton left: isotropic
+Bottom middle: final smooth
+</pre></div>
+<div class="source"><pre class="knitr r"><span class="hl std">R&gt; </span><span class="hl kwd">plotLevel2D</span><span class="hl std">(chs.modwt,</span> <span class="hl kwc">type</span> <span class="hl std">=</span> <span class="hl str">'raw'</span><span class="hl std">,</span> <span class="hl kwc">level</span> <span class="hl std">= J.chs,</span> <span class="hl kwc">decompType</span> <span class="hl std">=</span> <span class="hl str">'modwt'</span><span class="hl std">,</span> <span class="hl kwc">runQuiet</span> <span class="hl std">=</span> <span class="hl num">TRUE</span><span class="hl std">)</span>
+</pre></div>
+</div><div class="rimage default"><img src="figures/ssW-chsMODWTraw.levelJ-2.png" title="plot of chunk chsMODWTraw.levelJ" alt="plot of chunk chsMODWTraw.levelJ" class="plot" /></div></div>
+
+
+
+<h3> Summary </h3>
+
+<p> There are many more aspects to this package as outlined in the User's Guide. These
+  include plotting functions that allow the comparision of different sampling methods by
+  scale and covariance analysis. It also describes the edge or boundary correction methods
+  available in the wavelet analyis phase.
+</p>
+
+
+
+
+
 
 
 
@@ -196,7 +397,7 @@ the functionality of the package here.
 <div id="footer">
   <i>The examples in this page were generated using the very useful R
   package <a href="http://yihui.name/knitr/"><Rpkg>knitr</Rpkg></a>.<br>  Last updated:
-  3-Mar-2017 (jhg)</i>
+  7-Mar-2017 (jhg)</i>
 </div>
 
 </body>
