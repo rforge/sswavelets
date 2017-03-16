@@ -133,7 +133,7 @@ function(ss,
     wfName = match.arg(wfName)
    
     #see the vignettes about this... 
-    if(xres(ss@tract != 1) && shift)
+    if(xres(ss@tract) != 1 && shift)
       warning('\nResolutions other than 1 do not work with waveslim::shift.2d!')
 
     #inclusion zone class ==> type of sampling method used...
