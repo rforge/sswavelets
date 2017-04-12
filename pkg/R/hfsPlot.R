@@ -128,7 +128,7 @@ hfsPlot = function(...,
 #
     theFormula = formula(paste('iso.var ~ izArea|', conditionOn))
     plt = xyplot(theFormula, data = df, scales = scales, 
-                 groups = sm, auto.key = list(x = .8, y = .9, corner = c(0, 0)),  
+                 groups = sm, auto.key = list(x = .85, y = .85, corner = c(0, 0)),  
                  type = type,
                  as.table = as.table,
                  ylab = ylab,
@@ -147,7 +147,7 @@ hfsPlot = function(...,
 #
     if(nchar(fileName) > 0) {
       if(exists(hardcopyLattice))
-        hardcopyLattice(plt, fileName, ...) 
+        hardcopyLattice(plt, fileName) 
       else 
         message('Function hardcopyLattice unavailable, please print from the returned object.')
     }

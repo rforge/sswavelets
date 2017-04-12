@@ -151,10 +151,12 @@ function(ss,
     #this is my constraint and not necessary--put an override in?...
     min.NM = min(N,M)
     if(is.na(J) || is.null(J))
-      J = log(min.NM, 2) - 1
+      J = floor(log(min.NM, 2) - 1)
     if(2^J > min.NM/2) {
-      J = log(min.NM, 2) - 1
-      cat('\nJ too large, reset to J =', J,'\n')
+      #next two can be used to restrict J if desired, just uncomment/swap w/ warning()..
+      #J = floor(log(min.NM, 2) - 1)
+      #cat('\nJ too large, reset to J =', J,'\n')
+      warning('J = ', J, ' is > half the smallest tract dimension = ', min.NM/2)
     }      
       
 #***
