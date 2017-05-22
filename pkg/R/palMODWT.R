@@ -11,7 +11,7 @@ palMODWT = function(n,
 #   only occupies a small part of the range (see Note 2 below).
 #
 #   Arguments...
-#     n = the number of colors (≥ 1) to be in the palette
+#     n = the number of colors (>= 1) to be in the palette
 #     bias = see colorRampPalette
 #     range = the range of the variable in question
 #     ... = passed to colorRampPalette

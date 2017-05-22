@@ -35,11 +35,11 @@ covMODWT = function(ss.modwt.x, #if these two are the same, the results
 #   References...
 #       M&P = D. Mondal and D. B. Percival. 2012. Wavelet variance analysis
 #             for random fields on a regular lattice. IEEE Transactions on
-#             Image Processing, 21(2):537–549.
+#             Image Processing, 21(2):537-549.
 #       GPS = M. Geilhufe, D. B. Percival, and H. L. Stern. 2013.
 #             Two-dimensional wavelet variance estimation with
 #             application to sea ice sar images. Computers and Geosciences, 
-#             54:351–360.
+#             54:351-360.
 #       Univariate but still applicable...
 #       P&M = D. B. Percival & D. Mondal. 2012. A wavelet variance primer. Handbook
 #             of statistics, Vol. 30, chap. 22.
