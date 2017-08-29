@@ -272,8 +272,8 @@ plotMODWT2D = function(ssMODWT,
 #
 #   we can always return the level plot version; note that just the main title is used here...
 #
-    if(addLattice && require(rasterVis))
-      plt = levelplot(r, col.regions = col, main = title)
+    if(addLattice && requireNamespace('rasterVis'))
+      plt = rasterVis::levelplot(r, col.regions = col, main = title)
     else
       plt = NULL
     

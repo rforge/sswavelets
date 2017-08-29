@@ -46,9 +46,9 @@ ssCovMODWT(ssMODWT.a, ssMODWT.b, ...)
   A valid object of class \dQuote{\code{\linkS4class{ssCovMODWT}}.}
 }
 
-\references{
+%\references{
 %% ~put references to the literature/web site here ~
-}
+%}
 
 \author{
 Jeffrey H. Gove

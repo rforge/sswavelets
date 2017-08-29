@@ -2,7 +2,9 @@
 \Rdversion{1.1}
 \docType{class}
 \alias{ssMODWT-class}
+\alias{summary,ssMODWT-method}
 \alias{ssCovMODWT,ssMODWT,ssMODWT-method}
+\alias{ssMODWT,sampSurf}
 
 \title{Class \code{"ssMODWT"}}
 
@@ -81,9 +83,9 @@ Class \code{"\linkS4class{ssWavelet}"}, directly.
 	 }
 } %Methods
 
-\references{
+%\references{
 %%  ~~put references to the literature/web site here~~
-}
+%}
 
 \author{
 Jeffrey H. Gove

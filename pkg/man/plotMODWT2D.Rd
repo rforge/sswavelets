@@ -76,7 +76,7 @@ plotMODWT2D(ssMODWT,
 
   \item{title}{ Add a title to the plot if desired. The default (\code{NA}) is a title
       (and subtitles) constructed from the arguments passed. Otherwise, one can pass their
-      own title or \code{title = \dQuote{}} for no title. }
+      own title or \code{title = }\dQuote{\code{}} for no title. }
 
   \item{\dots}{ Gobbled. }
 
@@ -89,12 +89,12 @@ plotMODWT2D(ssMODWT,
   can be reviewed for more information.
 
   Note that not all combinations of argument options are available. For example, variance
-  is calculated only for \code{decompType = \dQuote{MODWT}} as noted above. Also,
-  \code{level = 0} is only meaningful at this point for \code{waveType = \dQuote{ISO}} and
-  \code{type = \dQuote{var}}, which presupposes \code{decompType = \dQuote{MODWT}}. Also,
-  only \code{type = \dQuote{var}} is allowed when the \code{ssMODWT} argument passed is an
+  is calculated only for \code{decompType = }\dQuote{\code{MODWT}} as noted above. Also,
+  \code{level = 0} is only meaningful at this point for \code{waveType = }\dQuote{\code{ISO}} and
+  \code{type = }\dQuote{\code{var}}, which presupposes \code{decompType = }\dQuote{\code{MODWT}}. Also,
+  only \code{type = }\dQuote{\code{var}} is allowed when the \code{ssMODWT} argument passed is an
   object of class \dQuote{ssCovMODWT}. This latter restriction is because there the
-  covariance is composed of two \dQuote{ssMODWT} objects; therefore, \code{type = \sQuote{raw}} %
+  covariance is composed of two \dQuote{ssMODWT} objects; therefore, \code{type = }\sQuote{\code{raw}} %
   would be ambiguous. One can always plot the raw wavelets for the individual
   \dQuote{ssMODWT} objects that were used to create the covariance object.
 

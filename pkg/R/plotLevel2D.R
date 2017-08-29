@@ -123,7 +123,8 @@ plotLevel2D = function(ssMODWT,
     r = merge(r, shift(r.iso$r, y = -ymax + ymin))                  #bottom left: isotropic
 
     if(level == J) {
-      r.ll = plotMODWT2D(ssMODWT, level, type=type, wave='LL', decompType=decompType, showPlot = FALSE)
+      r.ll = plotMODWT2D(ssMODWT, level, type=type, waveType='LL', decompType=decompType, 
+                         showPlot = FALSE)
       #need as.integer below to keep the origin correct in compareRaster (called from merge)...
       r = merge(r, shift(r.ll$r, x = xmin + as.integer((xmax - xmin)/2), y = -2*ymax + 2*ymin))
     }    

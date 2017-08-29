@@ -17,7 +17,7 @@
 
 \describe{
 
-  \item{\strong{\code{\code{signature(ss = "sampSurf")}}}}{}
+  \item{\strong{\code{signature(ss = "sampSurf")}}}{}
 
 
   \item{}{\bold{usage\ldots}

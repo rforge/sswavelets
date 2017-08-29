@@ -1,7 +1,7 @@
 \name{ssCovMODWT-methods}
 \docType{methods}
 \alias{ssCovMODWT-methods}
-\alias{ssCovMODWT,ssMODWT,ssMODWT-method}
+%\alias{ssCovMODWT,ssMODWT,ssMODWT-method}
 
 \title{
 
@@ -24,7 +24,7 @@
   \describe{
 	
 
-  \item{\strong{\code{\code{signature(ssMODWT.a = "ssMODWT", ssMODWT.b = "ssMODWT")}}}}{}
+  \item{\strong{\code{signature(ssMODWT.a = "ssMODWT", ssMODWT.b = "ssMODWT")}}}{}
 
 
   \item{}{\bold{usage\ldots}

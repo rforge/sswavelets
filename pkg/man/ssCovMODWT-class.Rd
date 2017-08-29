@@ -2,6 +2,8 @@
 \Rdversion{1.1}
 \docType{class}
 \alias{ssCovMODWT-class}
+%\alias{show,ssCovMODWT-method}
+\alias{summary,ssCovMODWT-method}
 
 \title{Class \code{"ssCovMODWT"}}
 
@@ -104,9 +106,9 @@ No methods defined with class "ssCovMODWT" in the signature. However the
 
 }
 
-\references{
+%\references{
 %%  ~~put references to the literature/web site here~~
-}
+%}
 
 \author{
 Jeffrey H. Gove

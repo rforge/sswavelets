@@ -89,8 +89,8 @@ function(ssMODWT.a,
       cat('\nsampSurf correlation =', ssCor)
       cat('\nWavelet sample covariance =', modwtCov)
       cat('\nWavelet sample correlation =', modwtCor, '(total)' )
+      cat('\n')  
     }
-    cat('\n')  
     
     summaryStats = list(ssCov = ssCov,
                         ssCor = ssCor,

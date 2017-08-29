@@ -40,9 +40,9 @@ ssMODWT(ss, ...)
   A valid object of class \dQuote{\code{\linkS4class{ssMODWT}}.}
 }
 
-\references{
+%\references{
 %% ~put references to the literature/web site here ~
-}
+%}
 
 \author{
 Jeffrey H. Gove

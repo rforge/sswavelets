@@ -2,8 +2,8 @@
 \Rdversion{1.1}
 \docType{class}
 \alias{ssWavelet-class}
-%\alias{show,ssWavelet-method}
-%\alias{summary,ssWavelet-method}
+\alias{show,ssWavelet-method}
+\alias{summary,ssWavelet-method}
 
 \title{Class \code{"ssWavelet"}}
 
@@ -51,8 +51,7 @@ Jeffrey H. Gove
 %% ~Make other sections like Warning with \section{Warning }{....} ~
 
 \seealso{
-%%  ~~objects to See Also as \code{\link{~~fun~~}}, ~~~
-%%  ~~or \code{\linkS4class{CLASSNAME}} for links to other classes ~~~
+\code{\linkS4class{ssMODWT}}, \code{\linkS4class{ssCovMODWT}}
 }
 
 \examples{

@@ -79,7 +79,7 @@ plotLevel2D(ssMODWT,
 
   \item{title}{ Add a title to the plot if desired. The default (\code{NA}) is a title
       (and subtitles) constructed from the arguments passed. Otherwise, one can pass their
-      own title or \code{title = \dQuote{}} for no title. }
+      own title or \code{title = }\dQuote{\code{}} for no title. }
 
 
   \item{showLegend}{ \code{TRUE}: Show the \sQuote{legend} identifiers around the outside

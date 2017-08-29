@@ -65,9 +65,9 @@ with components\ldots\cr
 
 }
 
-\references{
+%\references{
 %% ~put references to the literature/web site here ~
-}
+%}
 
 \author{
 Jeffrey H. Gove

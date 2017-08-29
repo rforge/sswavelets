@@ -63,7 +63,7 @@ varPlot(...,
 
   \item{showPlot}{ \code{TRUE}: display the plot; \code{FALSE}: no display. }
 
-  \item{fileName}{ The file name for a \sQuote{hard copy}; \code{\dQuote{}} for no hard copy file
+  \item{fileName}{ The file name for a \sQuote{hard copy}; \dQuote{\code{}} for no hard copy file
       of the plot. }
 
   \item{ylab}{ See \code{\link{par}}. }

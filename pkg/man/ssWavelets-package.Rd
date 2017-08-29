@@ -50,8 +50,8 @@
 \tabular{ll}{
 Package: \tab ssWavelets \cr
 Type: \tab Package \cr
-Version: \tab 0.1 \cr
-Date: \tab 12-Jan-2017 \cr
+Version: \tab 0.1-2 \cr
+Date: \tab 29-Aug-2017 \cr
 License: \tab GPL (>= 3) \cr
 LazyData: \tab TRUE \cr
 }
@@ -240,6 +240,9 @@ Author & Maintainer: Jeffrey H. Gove, <jgove@fs.fed.us>
 %
 \item{}{Gove, J. H. 2017. A User's Guide to the ssWavelets Package.
   \url{http://sswavelets.r-forge.r-project.org/}.}
+%
+\item{}{Gove, J. H. 2017. Some Refinements on the Comparison of Areal
+Sampling Methods via Simulation. \emph{Forests}, Submitted.}
 } %describe  
 
 } %references

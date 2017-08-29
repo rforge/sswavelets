@@ -1,13 +1,23 @@
 
 import(methods)
+import(sampSurf)
 #importFrom(graphics, plot, hist)
 import(sp)
 #importFrom("sp", bbox, Spatial, SpatialGrid, SpatialGridDataFrame, plot)
 import(raster)
-import(rasterVis)
-#importFrom("rasterVis", plot3D)
+#import(rasterVis)
+importFrom(rasterVis, levelplot)
 import(waveslim)
 
+importFrom(lattice, xyplot, trellis.par.get)
+importFrom(latticeExtra, custom.theme.2, ggplot2like, ggplot2like.opts,
+           theEconomist.theme, theEconomist.opts)
+
+#
+#as suggested by R CMD check...
+#
+importFrom(grDevices, colorRampPalette)
+importFrom(stats, formula, reshape)
 
 
 
@@ -15,8 +25,10 @@ import(waveslim)
 # Environments, misc functions, etc. for export
 #
 #exportPattern("^[[:alpha:]]+")
-exportPattern("^[[:alpha:]]+")
 
+export(plotMODWT2D, plotLevel2D)
+export(covMODWT, hfsMODWT, hfsPlot, varPlot, palMODWT, ssEnergy, ssToroid, ssReflect)
+#export(befp34)
 
 
 #--------------------------------------------------------------------------------------
@@ -29,4 +41,5 @@ exportClasses(ssWavelet, ssMODWT, ssCovMODWT)
 #--------------------------------------------------------------------------------------
 # methods export section...
 #
-exportMethods('ssMODWT', 'ssCovMODWT')
+exportMethods(ssMODWT, ssCovMODWT)
+exportMethods(show, summary)
